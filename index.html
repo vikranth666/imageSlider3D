@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Cube Slider</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style media="screen">
+    	* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #9cd2d8;
+}
+.wrapper {
+  border: 1px solid #ffffff;
+  height: 300px;
+  width: 300px;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 800px;
+  perspective-origin: 50%;
+}
+.image-cube {
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  position: relative;
+  transition: 2s;
+}
+.image-cube div {
+  height: 300px;
+  width: 300px;
+  position: absolute;
+}
+img {
+  width: 100%;
+  transform: translateZ(0);
+}
+.front {
+  transform: translateZ(150px);
+}
+.right {
+  transform: rotateY(-270deg) translateX(150px);
+  transform-origin: 100% 0;
+}
+.back {
+  transform: translateZ(-150px) rotateY(180deg);
+}
+.left {
+  transform: rotateY(270deg) translateX(-150px);
+  transform-origin: 0 50%;
+}
+.btns {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+.btns button {
+  background-color: transparent;
+  color: #ffffff;
+  border: 3px solid #ffffff;
+  background: #0a3342;
+  padding: 8px 40px;
+
+  border-radius: 20px;
+  font-size: 20px;
+  cursor: pointer;
+
+}
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div class="image-cube">
+          <div class="front">
+            <img src="https://1.bp.blogspot.com/-__NNfCoD8Yk/YTkIfzAvfYI/AAAAAAAACdk/C4ZrROh8DIAkzxHbn9YQ5b4jtjMARQlQgCNcBGAsYHQ/s0/1.jpg" />
+          </div>
+          <div class="right">
+            <img src="https://1.bp.blogspot.com/-e-IssOSdNYM/YTkIgFQuSuI/AAAAAAAACds/fKjJ5qZwYdQzqmyFPsRO5RSepBSAPycZQCNcBGAsYHQ/s0/3.jpg" />
+          </div>
+          <div class="back">
+            <img src="https://1.bp.blogspot.com/-3cFkgcTyjeE/YTkIf7sqxKI/AAAAAAAACdo/2Qq1szEFr_AmV0UCFHi8bM_elFRbrzgqQCNcBGAsYHQ/s0/2.jpg" />
+          </div>
+          <div class="left">
+            <img src="https://1.bp.blogspot.com/-O2ZnRtKS1xY/YTkIg5Vm6WI/AAAAAAAACdw/UfPGAP_dsAI3h9mkMwmS7ziAejgcHo3lACNcBGAsYHQ/s0/4.jpg" />
+          </div>
+        </div>
+      </div>
+      <div class="btns">
+        <button id="prev">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <button id="next">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Script -->
+    <script>
+let cube = document.querySelector(".image-cube");
+let btnNext = document.getElementById("next");
+let btnPrev = document.getElementById("prev");
+
+let pos = 0;
+
+btnNext.addEventListener("click", () => {
+  pos -= 90;
+  cube.style.transform = `rotateY(${pos}deg)`;
+});
+btnPrev.addEventListener("click", () => {
+  pos += 90;
+  cube.style.transform = `rotateY(${pos}deg)`;
+});
+    </script>
+  </body>
+</html>
